@@ -1,72 +1,31 @@
 * { margin: 0; padding: 0; border: 0; color: inherit; list-style-type: none; }
 body { position: relative; width: 1000px; height: 100%; margin: auto; font-family: Arial, Georgia, "Times New Roman", serif; font-size: 12px; background-color: #fff; }
-div.clear { clear: both; }
-.clear { clear: both; }
-.clear-block:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
-.clear-block { display: inline-block; }
-input { cursor: pointer; }
-hr { visibility: hidden; clear: both; }
-a { text-decoration: none; }
-.hide { visibility: hidden; }
-h1 { font-size: 12px; font-weight: normal; font-variant: small-caps; } 
-h2 { font-variant: small-caps; font-weight: normal; font-size: 14px; }
 
-#main { position: relative; /*top: 50%;*/ width: 1000px; height: 700px; /*margin-top: -350px;*/ background: blue url('road2.png') 0 20px repeat-x; overflow: hidden; -webkit-transition: 10s linear background-position 3s; }
+#main { position: relative; width: 1000px; height: 700px; background: black url('images/road2.png') 0 20px repeat-x; overflow: hidden; -webkit-transition: 10s linear background-position 3s; }
+
+/* Au survol du main, le background défile de 7000px horizontalement et garde ses 20px de positionnement vertical */
 #main:hover { background-position: 7000px 20px; }
-/*.englobe { position: relative; top: 300px; width: 1000px; height: 20px; background-color: #093849; }
-ul.nav { width: 1212px; }
-ul.nav li.level1 { position: absolute; bottom: 0; display: inline-block; width: 140px; height: 20px; margin: 0 0 0 8px; vertical-align: bottom; overflow: hidden; -webkit-transition: 500ms ease-out; }
-ul.nav li.level1:hover { width: 250px; height: 310px; }
-ul.nav li.level1 h1 { position: absolute; bottom: 0; width: 125px; height: 20px; text-align: center; background: #093849; z-index: 4; }
-ul.nav li.level1 .translateRight { position: relative; top: 20px; width: 125px; height: 90px; -webkit-transition: 500ms ease-out; }
-ul.nav li.level1 .translateRight:hover { width: 250px; }
-ul.nav li.level1 .translateRight img { position: absolute; z-index: 3; -webkit-transition: 500ms ease-out; }
-ul.nav li.level1 .translateRight:hover img { -webkit-transform: scale(1.2); }
-ul.nav li.level1 .translateRight h2 { position: absolute; top: 0; right: 0; width: 125px; height: 20px; padding-top: 70px; text-align: center; z-index: 1; }
-ul.nav li.level1 .translateRight h2:before { content: '> '; }*/
 
-/*.menu1 { left: 0; }
-.menu2 { left: 140px; }
-.menu3 { left: 280px; }
-.menu4 { left: 420px; }
-.menu5 { left: 560px; }
-.menu6 { left: 700px; }
-.menu7 { left: 840px; }*/
+.englobe { position: relative; top: 300px; width: 1000px; height: 20px; }
 
-/*.name img { position: relative; -webkit-transition: 250ms linear; }
-.name img:hover { position: relative; top: -8px; left: -13px; width: 151px; height: 108px; }*/
+.voiture { display: inline-block; position: absolute; bottom: 0; right: 0; -webkit-transition: 10s cubic-bezier(0,1,1,0) -webkit-transform 3s; }
 
-.name { width: 125px; height: 90; overflow: hidden; visibility: hidden; }
-.name img { -webkit-transition: 200ms linear -webkit-transform; }
-.name img:hover { -webkit-transform: scale(1.2); }
-
-.voiture { display: inline-block; position: absolute; top: -63px; right: 0; -webkit-transition: 10s cubic-bezier(0,1,1,0) -webkit-transform 3s; }
+/* Toujours au survol du main, la div voiture qui contient tous les éléments qui se déplaceront avec la voiture, se déplace de 800px de droite à gauche d'ou le '-' */
 #main:hover .voiture { -webkit-transform: translate(-800px, 0); }
+
 .voiture img.carcasse { -webkit-transition: 2s ease-out -webkit-transform 200ms; }
+
+/* Petite rotation de la carcase de la voiture pendant le burn de départ. A noter que cette transition ne dure que 2 secondes ( voir ligne ci-dessus). */
 #main:hover img.carcasse { -webkit-transform: rotate(2deg); }
-.voiture img.back, .voiture img.front { -webkit-transition: 13s cubic-bezier(0.5,1,1,0.5) -webkit-transform; }
+
+.voiture img.back, .voiture img.front { display: block; position: absolute; top: 31px; -webkit-border-radius: 15px; -moz-border-radius: 15px; border: 2px solid black; -webkit-transition: 13s cubic-bezier(0.5,1,1,0.5) -webkit-transform; }
+.voiture img.back { right: 24px; }
+.voiture img.front { left: 18px; }
+
+/* Mouvement de rotation des roues */
 #main:hover img.back, #main:hover img.front { -webkit-transform: rotate(-18720deg); }
+
 .voiture img.flames { position: absolute; top: 42px; left: 200px; visibility: hidden; -webkit-transition: 2s linear visibility 11s; }
+
+/* Apparition des flammes du pot d'une durée de 2s et avec un retard de 11 secondes (voir ci-dessus) */
 #main:hover img.flames { visibility: visible; }
-.voiture img.back { display: block; position: absolute; top: 31px; right: 24px; -webkit-border-radius: 15px; -moz-border-radius: 15px; border: 2px solid black; }
-.voiture img.front { display: block; position: absolute; top: 31px; left: 18px; -webkit-border-radius: 15px; -moz-border-radius: 15px; border: 2px solid black; } 
-
-
-
-.englobe { position: relative; top: 300px; width: 1000px; height: 20px; /*background-color: #093849; *//*visibility: hidden; */}
-ul.nav { width: 1212px; height: 20px; border: 1px solid red; visibility: hidden; }
-ul.nav li.level1 { position: relative; bottom: 250px; display: inline-block; width: 140px; margin: 0 0 0 8px; -webkit-transition: 500ms ease-out; }
-ul.nav li.level1:hover { bottom: 0px; }
-ul.nav li.level1 h1 { position: absolute; bottom: 0; width: 125px; height: 20px; text-align: center; background: #093849; z-index: 4; }
-ul.nav li.level1 .translateRight { width: 125px; height: 90px; -webkit-transition: 500ms ease-out; }
-ul.nav li.level1 .translateRight:hover { width: 250px; }
-ul.nav li.level1 .translateRight img { z-index: 3; }
-ul.nav li.level1 .translateRight h2 { position: relative; bottom: 90px; width: 125px; height: 20px; padding-top: 70px; text-align: center; z-index: 1; }
-ul.nav li.level1 .translateRight h2:before { content: '> '; }
-
-
- 
-
-
-
-
